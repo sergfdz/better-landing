@@ -1,13 +1,12 @@
 :root {
-  --forest-deep: #1f3b33;
-  --forest-mid: #2c5347;
-  --forest-soft: #6e9086;
-  --gold: #e8c468;
-  --gold-soft: #f3dfa8;
-  --cream: #faf7f0;
-  --cream-deep: #f0ebdf;
+  --blue-deep: #2c4a6e;
+  --blue-mid: #5b87ac;
+  --blue-soft: #b8d4e8;
+  --white: #ffffff;
+  --border: #e6e9ec;
   --ink: #1c1c1a;
   --ink-soft: #5b5b57;
+  --logo-muted: #7a7266;
   --max-width: 720px;
 }
 
@@ -21,14 +20,14 @@ html {
 
 body {
   margin: 0;
-  background: var(--cream);
+  background: var(--white);
   color: var(--ink);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   line-height: 1.6;
 }
 
 a {
-  color: var(--forest-mid);
+  color: var(--blue-deep);
 }
 
 .wrap {
@@ -48,18 +47,19 @@ header.site .wrap {
 }
 
 .wordmark {
-  display: flex;
-  align-items: center;
-  gap: 10px;
   text-decoration: none;
-  color: var(--ink);
-  font-weight: 600;
+  font-weight: 800;
   font-size: 1.15rem;
 }
 
-.wordmark img {
-  width: 28px;
-  height: 28px;
+.wordmark .bet {
+  color: var(--logo-muted);
+  text-decoration: line-through;
+  text-decoration-thickness: 0.09em;
+}
+
+.wordmark .ter {
+  color: var(--blue-deep);
 }
 
 nav.site-nav {
@@ -74,13 +74,13 @@ nav.site-nav a {
 }
 
 nav.site-nav a:hover {
-  color: var(--forest-mid);
+  color: var(--blue-deep);
 }
 
 .badge {
   display: inline-block;
-  background: var(--forest-deep);
-  color: var(--cream);
+  background: var(--blue-deep);
+  color: var(--white);
   font-size: 0.78rem;
   font-weight: 600;
   letter-spacing: 0.02em;
@@ -107,16 +107,16 @@ nav.site-nav a:hover {
 }
 
 .card {
-  background: #ffffff;
+  background: var(--white);
   border-radius: 20px;
   padding: 24px;
   margin-bottom: 18px;
-  border: 1px solid var(--cream-deep);
+  border: 1px solid var(--border);
 }
 
 .entry-date {
   font-size: 0.85rem;
-  color: var(--forest-mid);
+  color: var(--blue-deep);
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.04em;
@@ -136,8 +136,8 @@ nav.site-nav a:hover {
 .tag {
   display: inline-block;
   font-size: 0.75rem;
-  background: var(--cream-deep);
-  color: var(--forest-mid);
+  background: var(--blue-soft);
+  color: var(--blue-deep);
   padding: 3px 10px;
   border-radius: 999px;
   margin-right: 6px;
@@ -170,14 +170,14 @@ nav.site-nav a:hover {
 }
 
 .button.primary {
-  background: var(--forest-mid);
-  color: var(--cream);
+  background: var(--blue-deep);
+  color: var(--white);
 }
 
 .button.secondary {
   background: transparent;
-  color: var(--forest-mid);
-  border: 1px solid var(--forest-soft);
+  color: var(--blue-deep);
+  border: 1px solid var(--blue-mid);
 }
 
 footer.site {
@@ -192,8 +192,8 @@ footer.site {
 }
 
 .subscribe {
-  background: var(--forest-deep);
-  color: var(--cream);
+  background: var(--blue-deep);
+  color: var(--white);
   border-radius: 20px;
   padding: 28px 24px;
   margin: 40px 0;
@@ -206,7 +206,7 @@ footer.site {
 
 .subscribe p {
   margin: 0 0 16px;
-  color: var(--forest-soft);
+  color: var(--blue-soft);
   font-size: 0.95rem;
 }
 
@@ -227,8 +227,8 @@ footer.site {
 }
 
 .subscribe button {
-  background: var(--gold);
-  color: var(--ink);
+  background: var(--blue-soft);
+  color: var(--blue-deep);
   border: none;
   font-weight: 600;
   padding: 11px 22px;
@@ -241,43 +241,43 @@ footer.site {
 .subscribe .fineprint {
   margin-top: 10px;
   font-size: 0.78rem;
-  color: var(--forest-soft);
+  color: var(--blue-soft);
 }
 
 @media (prefers-color-scheme: dark) {
   body {
-    background: var(--forest-deep);
-    color: var(--cream);
+    background: var(--blue-deep);
+    color: var(--white);
   }
   a {
-    color: var(--gold);
+    color: var(--blue-soft);
   }
   .card {
-    background: #1a2e28;
-    border-color: #2a4a3f;
+    background: #1a2c3d;
+    border-color: #2a4560;
   }
   nav.site-nav a {
-    color: var(--forest-soft);
+    color: var(--blue-mid);
   }
   .hero p.lede,
   .entry p,
   .section-title,
   footer.site {
-    color: var(--forest-soft);
+    color: var(--blue-mid);
   }
   .entry-date {
-    color: var(--gold);
+    color: var(--blue-soft);
   }
   .tag {
-    background: #23392f;
-    color: var(--gold-soft);
+    background: #223954;
+    color: var(--blue-soft);
   }
   .button.primary {
-    background: var(--gold);
-    color: var(--forest-deep);
+    background: var(--blue-soft);
+    color: var(--blue-deep);
   }
   .button.secondary {
-    color: var(--gold);
-    border-color: var(--forest-soft);
+    color: var(--blue-soft);
+    border-color: var(--blue-mid);
   }
 }
