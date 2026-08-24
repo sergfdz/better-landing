@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Bet-ter — Building in public</title>
+    <link>https://bet-ter.me/journal.html</link>
+    <description>Building Bet-ter in public, day by day, for RevenueCat Shipaton 2026.</description>
+    <language>en</language>
+
+    <item>
+      <title>Why we're building Bet-ter, and why we're building it in public</title>
+      <link>https://bet-ter.me/journal.html#2026-08-24</link>
+      <guid>https://bet-ter.me/journal.html#2026-08-24</guid>
+      <pubDate>Mon, 24 Aug 2026 07:00:00 GMT</pubDate>
+      <description><![CDATA[Bet-ter started from a simple, stubborn idea: most tools built for people who gamble are built to shame them, diagnose them, or lock them out. We wanted something different — a free companion that helps you notice your own patterns and see what you're keeping, not just what you've lost.]]></description>
+    </item>
+  </channel>
+</rss>

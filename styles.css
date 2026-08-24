@@ -191,6 +191,59 @@ footer.site {
   font-style: italic;
 }
 
+.subscribe {
+  background: var(--forest-deep);
+  color: var(--cream);
+  border-radius: 20px;
+  padding: 28px 24px;
+  margin: 40px 0;
+}
+
+.subscribe h3 {
+  margin: 0 0 6px;
+  font-size: 1.15rem;
+}
+
+.subscribe p {
+  margin: 0 0 16px;
+  color: var(--forest-soft);
+  font-size: 0.95rem;
+}
+
+.subscribe form {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.subscribe input[type="email"] {
+  flex: 1;
+  min-width: 200px;
+  padding: 11px 16px;
+  border-radius: 999px;
+  border: none;
+  font-size: 0.95rem;
+  font-family: inherit;
+}
+
+.subscribe button {
+  background: var(--gold);
+  color: var(--ink);
+  border: none;
+  font-weight: 600;
+  padding: 11px 22px;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.subscribe .fineprint {
+  margin-top: 10px;
+  font-size: 0.78rem;
+  color: var(--forest-soft);
+}
+
 @media (prefers-color-scheme: dark) {
   body {
     background: var(--forest-deep);
