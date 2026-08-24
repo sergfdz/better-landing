@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bet-ter — Building in public</title>
+  <meta name="description" content="A free companion for the moments that matter. Bet-ter is being built in public for RevenueCat Shipaton 2026 — follow along here." />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site">
+    <div class="wrap">
+      <a class="wordmark" href="index.html">
+        <img src="assets/favicon.svg" alt="" />
+        Bet-ter
+      </a>
+      <nav class="site-nav">
+        <a href="journal.html">Journal</a>
+        <a href="story.html">Our story</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <span class="badge">Building in public · #Shipaton</span>
+      <h1>Don't focus on what you lost.<br />See what you're keeping.</h1>
+      <p class="lede">
+        Bet-ter is a free companion for people trying to reduce or stop gambling — it notices patterns,
+        sees higher-risk moments coming, and helps you keep what's yours. It's not built yet. This page is
+        where we're building it, in the open, one honest day at a time.
+      </p>
+      <div class="cta-row">
+        <a class="button primary" href="journal.html">Read the journal</a>
+        <a class="button secondary" href="story.html">Why we're building this</a>
+      </div>
+    </section>
+
+    <h2 class="section-title">Latest from the journal</h2>
+    <div id="latest-entries"></div>
+  </main>
+
+  <footer class="site">
+    <div class="wrap">Bet-ter — a free financial accountability companion. Not a diagnosis, not medical advice.</div>
+  </footer>
+
+  <script src="entries.js"></script>
+  <script>
+    const container = document.getElementById("latest-entries");
+    const latest = JOURNAL_ENTRIES.slice(0, 3);
+
+    if (latest.length === 0) {
+      container.innerHTML = '<p class="empty-state">The first entry is on its way.</p>';
+    } else {
+      container.innerHTML = latest
+        .map(
+          (entry) => `
+        <article class="card entry">
+          <div class="entry-date">${entry.date}</div>
+          <h3>${entry.title}</h3>
+          <p>${entry.body[0]}</p>
+          ${entry.tags.map((t) => `<span class="tag">${t}</span>`).join("")}
+        </article>
+      `,
+        )
+        .join("");
+    }
+  </script>
+</body>
+</html>
