@@ -49,17 +49,22 @@ header.site .wrap {
 .wordmark {
   text-decoration: none;
   font-weight: 800;
-  font-size: 1.9rem;
+  font-size: 2.4rem;
 }
 
+/* Plain body-text mentions of the name: just a strike on "Bet", no color change. */
 .bet {
-  color: var(--logo-muted);
   text-decoration: line-through;
-  text-decoration-thickness: 0.18em;
+  text-decoration-thickness: 0.09em;
   text-decoration-skip-ink: none;
 }
 
-.ter {
+/* The header wordmark is the one place the name is also color-coded. */
+.wordmark .bet {
+  color: var(--logo-muted);
+}
+
+.wordmark .ter {
   color: var(--blue-deep);
 }
 
