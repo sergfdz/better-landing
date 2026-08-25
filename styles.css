@@ -49,16 +49,17 @@ header.site .wrap {
 .wordmark {
   text-decoration: none;
   font-weight: 800;
-  font-size: 1.15rem;
+  font-size: 1.9rem;
 }
 
-.wordmark .bet {
+.bet {
   color: var(--logo-muted);
   text-decoration: line-through;
-  text-decoration-thickness: 0.09em;
+  text-decoration-thickness: 0.18em;
+  text-decoration-skip-ink: none;
 }
 
-.wordmark .ter {
+.ter {
   color: var(--blue-deep);
 }
 
@@ -104,6 +105,29 @@ nav.site-nav a:hover {
   font-size: 1.15rem;
   color: var(--ink-soft);
   max-width: 56ch;
+}
+
+.coming-soon {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--blue-deep);
+}
+
+.store-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ink);
+  background: var(--white);
+  border: 1px solid var(--border);
+  padding: 7px 14px;
+  border-radius: 999px;
 }
 
 .card {
