@@ -112,16 +112,22 @@ nav.site-nav a:hover {
   max-width: 56ch;
 }
 
-.coming-soon {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex-wrap: wrap;
-  font-size: 1.05rem;
-  font-weight: 600;
+.coming-soon-label {
+  display: block;
+  font-size: 1.15rem;
+  font-weight: 700;
   color: var(--blue-deep);
+  margin-bottom: 10px;
 }
 
+.store-badges {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* Plain, non-interactive badges -- deliberately not links, the app isn't
+   live on either store yet. */
 .store-pill {
   display: inline-flex;
   align-items: center;
@@ -133,6 +139,7 @@ nav.site-nav a:hover {
   border: 1px solid var(--border);
   padding: 7px 14px;
   border-radius: 999px;
+  cursor: default;
 }
 
 .card {
