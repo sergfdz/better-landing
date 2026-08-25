@@ -7,6 +7,14 @@
     <language>en</language>
 
     <item>
+      <title>Seventeen empty screens, and a color palette that isn't red or blue</title>
+      <link>https://bet-ter.me/journal.html#2026-08-25</link>
+      <guid>https://bet-ter.me/journal.html#2026-08-25</guid>
+      <pubDate>Tue, 25 Aug 2026 07:00:00 GMT</pubDate>
+      <description><![CDATA[Today was foundation work — the unglamorous kind that doesn't produce anything a screenshot can sell, but that everything else sits on top of. A Kotlin Multiplatform project from scratch: one shared module targeting Android and iOS, Compose Multiplatform for the UI, Koin wired in for dependency injection instead of reaching for something heavier.]]></description>
+    </item>
+
+    <item>
       <title>Why we're building Bet-ter, and why we're building it in public</title>
       <link>https://bet-ter.me/journal.html#2026-08-24</link>
       <guid>https://bet-ter.me/journal.html#2026-08-24</guid>
