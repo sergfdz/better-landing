@@ -75,15 +75,38 @@ The subscribe form on `index.html` and `journal.html` doubles as both a
 "new journal entry" list and the app's launch waitlist — one list, two
 purposes, explained in the form's own copy.
 
-It's wired for [Buttondown](https://buttondown.com) (generous free tier,
-popular in the build-in-public/indie-hacker world, can auto-email subscribers
-from an RSS feed so no manual "send campaign" step is needed):
+It's wired directly to a Supabase table via `waitlist.js` (no backend
+server, no per-subscriber fee) instead of a hosted email-list product:
 
-1. Create a free Buttondown account.
-2. In their dashboard, point their RSS-to-email feature at this site's
-   `feed.xml` (once hosted) so new entries email subscribers automatically.
-3. Replace `YOUR_BUTTONDOWN_USERNAME` in the form `action` URL in both
-   `index.html` and `journal.html` with your real Buttondown username.
+1. Create a free Supabase project. This can be the same project the app
+   itself eventually uses for remote sync (`SupabaseConfig.kt` in the app
+   repo) -- one project, two tables.
+2. In the SQL editor, create the table and lock it down to insert-only for
+   anonymous visitors:
+   ```sql
+   create table waitlist_signups (
+     id bigint generated always as identity primary key,
+     email text not null unique,
+     created_at timestamptz not null default now()
+   );
+
+   alter table waitlist_signups enable row level security;
+
+   create policy "anon can insert" on waitlist_signups
+     for insert to anon
+     with check (true);
+   ```
+   No select/update/delete policy is created, so the anon key can add rows
+   but never read, edit, or export them back out through the API.
+3. In `waitlist.js`, replace `SUPABASE_URL` and `SUPABASE_ANON_KEY` with the
+   project's real values (Project Settings -> API).
+
+This intentionally does not auto-email anyone the way Buttondown's
+RSS-to-email feature would -- it only collects addresses. Until that's
+worth building, export the table and send updates by hand (or BCC) when
+there's something worth telling people. RSS (`feed.xml`) remains the
+zero-setup way for anyone who wants to follow along without handing over
+an email at all.
 
 `feed.xml` needs a new `<item>` each time `entries.js` gets a new entry —
 whoever/whatever adds an entry should add the matching RSS item in the same
