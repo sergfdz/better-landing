@@ -2,8 +2,9 @@
 // no backend server needed, and no per-subscriber cost like a hosted
 // email-list product would add. See README.md "Email signup + RSS" for
 // the one-time Supabase project/table setup this expects.
-const SUPABASE_URL = "https://your-project.supabase.co";
-const SUPABASE_ANON_KEY = "your-anon-key";
+const SUPABASE_URL = "https://fvgpnrymprmalvcoaagd.supabase.co";
+const SUPABASE_ANON_KEY =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZ2Z3BucnltcHJtYWx2Y29hYWdkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc3MTQ5ODksImV4cCI6MjEwMzI5MDk4OX0.8po5LxHKNnrTVIhZWsqle9n0bBMJ4I2jkp_yArOAXJ0";
 
 document.querySelectorAll("form.waitlist-form").forEach((form) => {
   const button = form.querySelector("button");
