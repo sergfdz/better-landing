@@ -112,34 +112,77 @@ nav.site-nav a:hover {
   max-width: 56ch;
 }
 
-.coming-soon-label {
-  display: block;
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: var(--blue-deep);
-  margin-bottom: 10px;
-}
-
 .store-badges {
   display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 14px;
+  width: fit-content;
 }
 
 /* Plain, non-interactive badges -- deliberately not links, the app isn't
-   live on either store yet. */
+   live on either store yet. Styled to read as familiar store badges (dark
+   pill, store icon, two-line label) with a "Coming Soon!" ribbon banner
+   across the corner, since neither link goes anywhere yet. */
 .store-pill {
+  position: relative;
+  overflow: hidden;
   display: inline-flex;
   align-items: center;
-  gap: 7px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--ink);
-  background: var(--white);
-  border: 1px solid var(--border);
-  padding: 7px 14px;
-  border-radius: 999px;
+  gap: 12px;
+  width: 190px;
+  height: 56px;
+  padding: 0 16px;
+  background: linear-gradient(180deg, #333 0%, #000 55%);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
   cursor: default;
+}
+
+.store-icon {
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+}
+
+.play-icon {
+  clip-path: polygon(15% 4%, 15% 96%, 90% 50%);
+  background: conic-gradient(from 200deg at 30% 50%, #00d2ff, #3ae374, #ffcc00, #ff4757, #00d2ff);
+}
+
+.store-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.store-text-small {
+  font-size: 0.62rem;
+  color: #cfcfcf;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.store-text-big {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.ribbon {
+  position: absolute;
+  top: 12px;
+  left: -42px;
+  width: 190px;
+  transform: rotate(-24deg);
+  transform-origin: center;
+  background: linear-gradient(135deg, #ffa73d, #ff7a1a);
+  color: #fff;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-align: center;
+  padding: 3px 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.35);
 }
 
 .card {
