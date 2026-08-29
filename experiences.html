@@ -47,6 +47,16 @@
       </form>
     </section>
 
+    <div id="sort-row" style="display:flex; align-items:center; gap:8px; margin:28px 0 2px; flex-wrap:wrap;">
+      <span style="font-size:0.82rem; color:var(--ink-soft); margin-right:2px;">Sort by</span>
+      <button type="button" class="sort-btn" data-sort="recent"
+        style="font-family:inherit; font-size:0.82rem; font-weight:600; border:1px solid var(--blue-mid); border-radius:999px; padding:6px 14px; cursor:pointer; background:var(--blue-deep); color:#fff;">Newest</button>
+      <button type="button" class="sort-btn" data-sort="likes"
+        style="font-family:inherit; font-size:0.82rem; font-weight:600; border:1px solid var(--blue-mid); border-radius:999px; padding:6px 14px; cursor:pointer; background:transparent; color:var(--blue-deep);">Most liked</button>
+      <button type="button" class="sort-btn" data-sort="comments"
+        style="font-family:inherit; font-size:0.82rem; font-weight:600; border:1px solid var(--blue-mid); border-radius:999px; padding:6px 14px; cursor:pointer; background:transparent; color:var(--blue-deep);">Most discussed</button>
+    </div>
+
     <div id="experiences-list"></div>
     <p id="load-more-wrap" style="text-align:center; display:none;">
       <button id="load-more" class="button secondary" style="border:1px solid var(--blue-mid); background:transparent; cursor:pointer; font-family:inherit;">Load more</button>

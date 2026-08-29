@@ -11,15 +11,17 @@ const SUPABASE_URL = "https://fvgpnrymprmalvcoaagd.supabase.co";
 const SUPABASE_ANON_KEY =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZ2Z3BucnltcHJtYWx2Y29hYWdkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc3MTQ5ODksImV4cCI6MjEwMzI5MDk4OX0.8po5LxHKNnrTVIhZWsqle9n0bBMJ4I2jkp_yArOAXJ0";
 
-const REACTIONS = [
-  { emoji: "🙌", label: "I relate" },
-  { emoji: "❤️", label: "Sending love" },
-  { emoji: "💪", label: "Stay strong" },
-  { emoji: "🙏", label: "Respect" },
-];
+const HEART = "❤️";
+
+const SORTS = {
+  recent: "created_at.desc",
+  likes: "like_count.desc,created_at.desc",
+  comments: "comment_count.desc,created_at.desc",
+};
 
 const PAGE_SIZE = 20;
 let offset = 0;
+let currentSort = "recent";
 
 function escapeHtml(str) {
   const div = document.createElement("div");
@@ -70,16 +72,13 @@ function authorLine(row) {
   return row.is_anonymous || !row.display_name ? "Anonymous" : escapeHtml(row.display_name);
 }
 
-function reactionButtonsHtml(postId, counts) {
-  return REACTIONS.map(({ emoji, label }) => {
-    const count = counts[emoji] || 0;
-    const already = localStorage.getItem(reactedKey(postId, emoji));
-    return `<button type="button" class="reaction-btn" data-post-id="${postId}" data-emoji="${emoji}"
-        title="${label}" ${already ? "disabled" : ""}
-        style="display:inline-flex; align-items:center; gap:5px; border:1px solid var(--border); background:${already ? "var(--blue-soft)" : "transparent"}; border-radius:999px; padding:5px 12px; font-size:0.85rem; cursor:${already ? "default" : "pointer"}; font-family:inherit; margin-right:6px;">
-        <span>${emoji}</span><span>${count}</span>
-      </button>`;
-  }).join("");
+function heartButtonHtml(postId, count) {
+  const already = localStorage.getItem(reactedKey(postId, HEART));
+  return `<button type="button" class="reaction-btn" data-post-id="${postId}" data-emoji="${HEART}"
+      title="Like" ${already ? "disabled" : ""}
+      style="display:inline-flex; align-items:center; gap:5px; border:1px solid var(--border); background:${already ? "var(--blue-soft)" : "transparent"}; border-radius:999px; padding:5px 12px; font-size:0.85rem; cursor:${already ? "default" : "pointer"}; font-family:inherit; margin-right:6px;">
+      <span>${HEART}</span><span>${count}</span>
+    </button>`;
 }
 
 function reportButtonHtml(kind, id) {
@@ -113,17 +112,15 @@ function wireIdentityToggle(scope) {
 }
 
 function postCardHtml(post) {
-  const counts = {};
-  (post.experience_reactions || []).forEach((r) => (counts[r.emoji] = r.count));
   return `
     <article class="card experience-post" data-post-id="${post.id}">
       <div class="entry-date">${timeAgo(post.created_at)} · ${authorLine(post)}</div>
       <p style="white-space:pre-wrap;">${escapeHtml(post.body)}</p>
       <div style="display:flex; align-items:center; flex-wrap:wrap; gap:6px; margin-top:14px;">
-        ${reactionButtonsHtml(post.id, counts)}
-        <button type="button" class="toggle-comments-btn" data-post-id="${post.id}"
+        ${heartButtonHtml(post.id, post.like_count || 0)}
+        <button type="button" class="toggle-comments-btn" data-post-id="${post.id}" data-count="${post.comment_count || 0}"
           style="border:none; background:none; color:var(--blue-deep); font-weight:600; font-size:0.85rem; cursor:pointer; font-family:inherit; margin-left:6px;">
-          Comments
+          Comments (${post.comment_count || 0})
         </button>
         <span style="margin-left:auto;">${reportButtonHtml("post", post.id)}</span>
       </div>
@@ -152,7 +149,7 @@ function commentFormHtml(postId) {
 
 async function loadPosts(append) {
   const posts = await supaFetch(
-    `experience_posts?select=*,experience_reactions(emoji,count)&hidden=eq.false&order=created_at.desc&limit=${PAGE_SIZE}&offset=${offset}`,
+    `experience_posts?select=*&hidden=eq.false&order=${SORTS[currentSort]}&limit=${PAGE_SIZE}&offset=${offset}`,
   );
   const list = document.getElementById("experiences-list");
   if (!append) list.innerHTML = "";
@@ -264,6 +261,12 @@ async function handleCommentSubmit(form) {
     const section = document.querySelector(`.comments-section[data-post-id="${postId}"]`);
     section.dataset.loaded = "false";
     await toggleComments(postId, section);
+    const toggleBtn = document.querySelector(`.toggle-comments-btn[data-post-id="${postId}"]`);
+    if (toggleBtn) {
+      const newCount = (Number(toggleBtn.dataset.count) || 0) + 1;
+      toggleBtn.dataset.count = newCount;
+      toggleBtn.textContent = `Comments (${newCount})`;
+    }
   } finally {
     button.disabled = false;
   }
@@ -278,6 +281,20 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   document.getElementById("load-more").addEventListener("click", () => loadPosts(true));
+
+  document.getElementById("sort-row").addEventListener("click", (e) => {
+    const btn = e.target.closest(".sort-btn");
+    if (!btn || btn.dataset.sort === currentSort) return;
+    document.querySelectorAll(".sort-btn").forEach((b) => {
+      b.style.background = "transparent";
+      b.style.color = "var(--blue-deep)";
+    });
+    btn.style.background = "var(--blue-deep)";
+    btn.style.color = "#fff";
+    currentSort = btn.dataset.sort;
+    offset = 0;
+    loadPosts(false);
+  });
 
   document.getElementById("experiences-list").addEventListener("click", (e) => {
     const reactBtn = e.target.closest(".reaction-btn");
