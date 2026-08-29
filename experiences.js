@@ -54,7 +54,8 @@ async function supaFetch(path, options = {}) {
     },
   });
   if (!response.ok) throw new Error(`Request failed: ${response.status}`);
-  return response.status === 204 ? null : response.json();
+  const text = await response.text();
+  return text ? JSON.parse(text) : null;
 }
 
 function reactedKey(postId, emoji) {
