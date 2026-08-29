@@ -233,13 +233,6 @@ nav.site-nav a:hover {
   margin: 48px 0 18px;
 }
 
-.cta-row {
-  display: flex;
-  gap: 14px;
-  margin-top: 24px;
-  flex-wrap: wrap;
-}
-
 .button {
   display: inline-block;
   text-decoration: none;
@@ -322,6 +315,48 @@ footer.site {
   margin-top: 10px;
   font-size: 0.78rem;
   color: var(--blue-soft);
+}
+
+.subscribe-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  background: var(--blue-deep);
+  border-radius: 999px;
+  padding: 10px 10px 10px 22px;
+  margin: 20px 0;
+}
+
+.subscribe-bar-label {
+  flex: 1;
+  min-width: 160px;
+  color: var(--blue-soft);
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.subscribe-bar input[type="email"] {
+  flex: 1;
+  min-width: 160px;
+  padding: 9px 16px;
+  border-radius: 999px;
+  border: none;
+  font-size: 0.88rem;
+  font-family: inherit;
+}
+
+.subscribe-bar button {
+  background: var(--blue-soft);
+  color: var(--blue-deep);
+  border: none;
+  font-weight: 600;
+  padding: 9px 20px;
+  border-radius: 999px;
+  font-size: 0.88rem;
+  cursor: pointer;
+  font-family: inherit;
+  white-space: nowrap;
 }
 
 @media (prefers-color-scheme: dark) {

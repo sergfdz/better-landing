@@ -23,9 +23,16 @@
     </div>
   </header>
 
+  <div class="wrap">
+    <form class="waitlist-form subscribe-bar">
+      <span class="subscribe-bar-label">Be first in line at launch</span>
+      <input type="email" name="email" placeholder="you@email.com" required />
+      <button type="submit">Notify me</button>
+    </form>
+  </div>
+
   <main class="wrap">
     <section class="hero">
-      <span class="badge">Building in public · #Shipaton</span>
       <div class="coming-soon">
         <div class="store-badges">
           <span class="store-pill">
@@ -50,22 +57,9 @@
           </span>
         </div>
       </div>
-      <div class="cta-row">
-        <a class="button primary" href="journal.html">Read the journal</a>
-        <a class="button secondary" href="story.html">Why we're building this</a>
-      </div>
     </section>
 
-    <section class="subscribe">
-      <h3>Get the journal, and be first in line at launch</h3>
-      <p>One email list, two things: new journal entries as they're posted, and an early heads-up the moment <span class="bet">Bet</span><span class="ter">ter</span> is ready to download.</p>
-      <form class="waitlist-form">
-        <input type="email" name="email" placeholder="you@email.com" required />
-        <button type="submit">Notify me</button>
-      </form>
-      <p class="fineprint">No spam, unsubscribe anytime. Also available as <a href="feed.xml" style="color: var(--blue-soft);">RSS</a>.</p>
-    </section>
-
+    <span class="badge">Building in public · #Shipaton</span>
     <h2 class="section-title">Latest from the journal</h2>
     <div id="latest-entries"></div>
   </main>
