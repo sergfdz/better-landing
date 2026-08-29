@@ -176,16 +176,18 @@ nav.site-nav a:hover {
   color: #fff;
 }
 
+/* Anchored to the right (not the left, where the store icon sits) so it
+   only clips the tail of the label text, never the logo. */
 .ribbon {
   position: absolute;
-  top: 12px;
-  left: -42px;
-  width: 190px;
-  transform: rotate(-24deg);
+  top: 10px;
+  right: -30px;
+  width: 120px;
+  transform: rotate(35deg);
   transform-origin: center;
   background: linear-gradient(135deg, #ffa73d, #ff7a1a);
   color: #fff;
-  font-size: 0.68rem;
+  font-size: 0.64rem;
   font-weight: 700;
   letter-spacing: 0.02em;
   text-align: center;
