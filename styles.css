@@ -116,8 +116,10 @@ nav.site-nav a:hover {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 14px;
   width: fit-content;
+  margin: 0 auto;
 }
 
 /* Plain, non-interactive badges -- deliberately not links, the app isn't
@@ -233,6 +235,21 @@ nav.site-nav a:hover {
   margin: 48px 0 18px;
 }
 
+/* Groups the "Building in public" badge tightly with the heading right
+   below it, so the badge reads as labeling that section specifically
+   rather than floating on its own. */
+.journal-teaser {
+  margin-top: 48px;
+}
+
+.journal-teaser .badge {
+  margin-bottom: 10px;
+}
+
+.journal-teaser .section-title {
+  margin: 0 0 18px;
+}
+
 .button {
   display: inline-block;
   text-decoration: none;
@@ -262,59 +279,6 @@ footer.site {
 .empty-state {
   color: var(--ink-soft);
   font-style: italic;
-}
-
-.subscribe {
-  background: var(--blue-deep);
-  color: var(--white);
-  border-radius: 20px;
-  padding: 28px 24px;
-  margin: 40px 0;
-}
-
-.subscribe h3 {
-  margin: 0 0 6px;
-  font-size: 1.15rem;
-}
-
-.subscribe p {
-  margin: 0 0 16px;
-  color: var(--blue-soft);
-  font-size: 0.95rem;
-}
-
-.subscribe form {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-.subscribe input[type="email"] {
-  flex: 1;
-  min-width: 200px;
-  padding: 11px 16px;
-  border-radius: 999px;
-  border: none;
-  font-size: 0.95rem;
-  font-family: inherit;
-}
-
-.subscribe button {
-  background: var(--blue-soft);
-  color: var(--blue-deep);
-  border: none;
-  font-weight: 600;
-  padding: 11px 22px;
-  border-radius: 999px;
-  font-size: 0.95rem;
-  cursor: pointer;
-  font-family: inherit;
-}
-
-.subscribe .fineprint {
-  margin-top: 10px;
-  font-size: 0.78rem;
-  color: var(--blue-soft);
 }
 
 .subscribe-bar {
