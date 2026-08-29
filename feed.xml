@@ -2,22 +2,22 @@
 <rss version="2.0">
   <channel>
     <title>B̶e̶t̶ter — Building in public</title>
-    <link>https://bet-ter.me/journal.html</link>
+    <link>https://bet-ter.me/index.html</link>
     <description>Building B̶e̶t̶ter in public, day by day, for RevenueCat Shipaton 2026.</description>
     <language>en</language>
 
     <item>
       <title>Seventeen empty screens, and a color palette that isn't red or blue</title>
-      <link>https://bet-ter.me/journal.html#2026-08-25</link>
-      <guid>https://bet-ter.me/journal.html#2026-08-25</guid>
+      <link>https://bet-ter.me/index.html#2026-08-25</link>
+      <guid>https://bet-ter.me/index.html#2026-08-25</guid>
       <pubDate>Tue, 25 Aug 2026 07:00:00 GMT</pubDate>
       <description><![CDATA[Today was foundation work — the unglamorous kind that doesn't produce anything a screenshot can sell, but that everything else sits on top of. A Kotlin Multiplatform project from scratch: one shared module targeting Android and iOS, Compose Multiplatform for the UI, Koin wired in for dependency injection instead of reaching for something heavier.]]></description>
     </item>
 
     <item>
       <title>Why we're building B̶e̶t̶ter, and why we're building it in public</title>
-      <link>https://bet-ter.me/journal.html#2026-08-24</link>
-      <guid>https://bet-ter.me/journal.html#2026-08-24</guid>
+      <link>https://bet-ter.me/index.html#2026-08-24</link>
+      <guid>https://bet-ter.me/index.html#2026-08-24</guid>
       <pubDate>Mon, 24 Aug 2026 07:00:00 GMT</pubDate>
       <description><![CDATA[B̶e̶t̶ter started from a simple, stubborn idea: most tools built for people who gamble are built to shame them, diagnose them, or lock them out. We wanted something different — a free companion that helps you notice your own patterns and see what you're keeping, not just what you've lost.]]></description>
     </item>

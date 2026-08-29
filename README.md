@@ -3,16 +3,18 @@
 A plain static site (no build step, no framework) that's the pre-launch home
 for **bet-ter.me**. Right now it's the build-in-public journal for
 RevenueCat Shipaton 2026 (`#Shipaton`). On launch day, `index.html` gets
-replaced with the real product landing page — `journal.html` and
-`story.html` stay as-is and just get linked from wherever makes sense in the
-new design (a small "Our story" / "Building in public" link, per the
-original plan).
+replaced with the real product landing page — the journal content moves one
+click away and `story.html` stays as-is, both linked from wherever makes
+sense in the new design (a small "Our story" / "Building in public" link,
+per the original plan).
 
 ## Structure
 
-- `index.html` — current homepage: hero + email signup + latest 3 journal
-  entries.
-- `journal.html` — the full chronological journal.
+- `index.html` — the homepage: sticky header + waitlist bar, coming-soon
+  store badges, and the full journal underneath (`#journal`), one entry per
+  card, newest first, each collapsed to its first paragraph with a "Read
+  more" toggle. There's no separate journal page anymore — everything lives
+  here.
 - `story.html` — placeholder for the personal story behind the app. Edit
   the `<p class="lede">` (and surrounding markup) by hand when ready — this
   one is not touched by the automated journal entries.
@@ -74,9 +76,9 @@ own voice, or hold an entry back a day.
 
 ## Email signup + RSS
 
-The subscribe form on `index.html` and `journal.html` doubles as both a
+The subscribe bar in `index.html`'s sticky header doubles as both a
 "new journal entry" list and the app's launch waitlist — one list, two
-purposes, explained in the form's own copy.
+purposes.
 
 It's wired directly to a Supabase table via `waitlist.js` (no backend
 server, no per-subscriber fee) instead of a hosted email-list product:
@@ -158,11 +160,11 @@ not worth solving before there's real traffic to justify it).
 1. Append one new object to the **top** of the `JOURNAL_ENTRIES` array in
    `entries.js`, matching the existing schema.
 2. Add a matching `<item>` near the top of `feed.xml` (same title/date,
-   `description` can be the entry's first paragraph).
+   `description` can be the entry's first paragraph, link/guid pointing at
+   `https://bet-ter.me/index.html#YYYY-MM-DD`).
 3. Commit both files together on the **`drafts` branch** (never `master`)
-   and push. Don't touch `index.html`, `journal.html`, `story.html`, or
-   `styles.css` — the pages already render whatever is in `entries.js`
-   automatically.
+   and push. Don't touch `index.html`, `story.html`, or `styles.css` — the
+   homepage already renders whatever is in `entries.js` automatically.
 
 Pace entries like realistic daily progress, not a raw commit log — the
 actual engineering happens in bursts, but the journal should read like one

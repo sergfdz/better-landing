@@ -37,10 +37,15 @@ a {
 }
 
 header.site {
-  padding: 28px 0;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--white);
+  padding: 20px 0;
+  border-bottom: 1px solid var(--border);
 }
 
-header.site .wrap {
+.header-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -226,28 +231,17 @@ nav.site-nav a:hover {
   font-weight: 600;
 }
 
-.section-title {
+.read-more-btn {
+  display: inline-block;
+  background: none;
+  border: none;
+  color: var(--blue-deep);
+  font-weight: 600;
   font-size: 0.85rem;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--ink-soft);
-  font-weight: 700;
-  margin: 48px 0 18px;
-}
-
-/* Groups the "Building in public" badge tightly with the heading right
-   below it, so the badge reads as labeling that section specifically
-   rather than floating on its own. */
-.journal-teaser {
-  margin-top: 48px;
-}
-
-.journal-teaser .badge {
-  margin-bottom: 10px;
-}
-
-.journal-teaser .section-title {
-  margin: 0 0 18px;
+  padding: 0;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-family: inherit;
 }
 
 .button {
@@ -289,7 +283,7 @@ footer.site {
   background: var(--blue-deep);
   border-radius: 999px;
   padding: 10px 10px 10px 22px;
-  margin: 20px 0;
+  margin-top: 16px;
 }
 
 .subscribe-bar-label {
@@ -331,6 +325,10 @@ footer.site {
   a {
     color: var(--blue-soft);
   }
+  header.site {
+    background: var(--blue-deep);
+    border-bottom-color: #3d5d82;
+  }
   .card {
     background: #1a2c3d;
     border-color: #2a4560;
@@ -340,11 +338,13 @@ footer.site {
   }
   .hero p.lede,
   .entry p,
-  .section-title,
   footer.site {
     color: var(--blue-mid);
   }
   .entry-date {
+    color: var(--blue-soft);
+  }
+  .read-more-btn {
     color: var(--blue-soft);
   }
   .tag {
