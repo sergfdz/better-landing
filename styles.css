@@ -114,7 +114,8 @@ nav.site-nav a:hover {
 
 .store-badges {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
   gap: 14px;
   width: fit-content;
 }
