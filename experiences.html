@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Experiences — B̶e̶t̶ter</title>
+  <meta name="description" content="Real stories from people building a better relationship with gambling -- shared by name or anonymously." />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site">
+    <div class="wrap">
+      <a class="wordmark" href="index.html">
+        <span class="bet">Bet</span><span class="ter">ter</span>
+      </a>
+      <nav class="site-nav">
+        <a href="journal.html">Journal</a>
+        <a href="experiences.html">Experiences</a>
+        <a href="story.html">Our story</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero" style="padding-bottom: 8px;">
+      <span class="badge">Community</span>
+      <h1 style="font-size: 1.9rem;">Experiences</h1>
+      <p class="lede">Stories from people cutting back or quitting gambling -- with a name, or anonymous. Read, react, or add your own.</p>
+    </section>
+
+    <section class="card">
+      <h3 style="margin-top:0;">Share your experience</h3>
+      <form id="post-form">
+        <textarea name="body" required maxlength="4000" rows="5" placeholder="What happened, what you're feeling, what's helped..."
+          style="width:100%; padding:12px; border-radius:12px; border:1px solid var(--border); font-family:inherit; font-size:0.95rem; resize:vertical;"></textarea>
+        <div style="display:flex; align-items:center; gap:12px; margin-top:12px; flex-wrap:wrap;">
+          <label style="display:flex; align-items:center; gap:6px; font-size:0.9rem;">
+            <input type="checkbox" name="is_anonymous" checked />
+            Post anonymously
+          </label>
+          <input type="text" name="display_name" placeholder="Your name" maxlength="60"
+            style="display:none; padding:9px 14px; border-radius:999px; border:1px solid var(--border); font-family:inherit; font-size:0.9rem;" />
+          <button type="submit" class="button primary" style="margin-left:auto; border:none; cursor:pointer; font-family:inherit;">Post</button>
+        </div>
+        <p class="fineprint" style="margin-top:10px; color:var(--ink-soft); font-size:0.78rem;">Be kind -- this is a support space, not a debate. Posts go live immediately; use "Report" on anything that shouldn't be here.</p>
+      </form>
+    </section>
+
+    <div id="experiences-list"></div>
+    <p id="load-more-wrap" style="text-align:center; display:none;">
+      <button id="load-more" class="button secondary" style="border:1px solid var(--blue-mid); background:transparent; cursor:pointer; font-family:inherit;">Load more</button>
+    </p>
+  </main>
+
+  <footer class="site">
+    <div class="wrap"><span class="bet">Bet</span><span class="ter">ter</span> — a free financial accountability companion. Not a diagnosis, not medical advice.</div>
+  </footer>
+
+  <script src="experiences.js"></script>
+</body>
+</html>

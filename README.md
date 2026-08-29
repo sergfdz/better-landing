@@ -20,6 +20,9 @@ original plan).
   array, newest entry first. See the schema comment at the top of the file.
 - `feed.xml` — RSS feed mirroring `entries.js`, one `<item>` per entry, kept
   in sync by hand alongside it.
+- `experiences.html` / `experiences.js` — the community experiences board
+  (see "Experiences board" below). Unlike the journal, this content is
+  live user data in Supabase, not a file in this repo.
 - `styles.css` — shared design tokens (the same forest/gold/cream palette as
   the Bet-ter app itself) and component styles.
 - `assets/favicon.svg` — the coin mark, matches the app's launcher icon.
@@ -111,6 +114,44 @@ an email at all.
 `feed.xml` needs a new `<item>` each time `entries.js` gets a new entry —
 whoever/whatever adds an entry should add the matching RSS item in the same
 commit (see the daily-agent instructions below).
+
+## Experiences board
+
+`experiences.html` is a small public board where visitors post their own
+gambling-recovery experiences (named or anonymous), react with one of four
+emoji, and reply in comments. It reads/writes directly against the same
+Supabase project as the waitlist, via four tables added in the
+`add_experiences_board` migration: `experience_posts`,
+`experience_comments`, `experience_reactions`, `experience_reports`. No
+separate setup beyond what the waitlist table already needs — same
+`SUPABASE_URL` / `SUPABASE_ANON_KEY` pair, hardcoded in `experiences.js`.
+
+**Moderation model: publish-then-report, not pre-approval.** Posts and
+comments go live the instant they're submitted — there's no review queue.
+Anyone can click "Report" on a post or comment (writes to
+`experience_reports`, insert-only for anonymous visitors — reports can't be
+read back through the public API, only from the Supabase dashboard). To act
+on a report: find the row in the Supabase table editor and flip its
+`hidden` column to `true` — the public `select` policies on
+`experience_posts`/`experience_comments` filter out `hidden = true` rows,
+so it disappears from the site immediately without deleting the record.
+Check `experience_reports` periodically by hand; there's no dashboard or
+notification for new reports yet.
+
+Reactions (🙌 ❤️ 💪 🙏) can't be written to directly — anon has no
+insert/update grant on `experience_reactions`. The only way to move a
+count is the `react_to_experience(post_id, emoji)` Postgres function
+(`security definer`, callable via `/rest/v1/rpc/react_to_experience`),
+which validates the emoji and that the post isn't hidden before
+incrementing. This is also why the Supabase security advisor flags that
+function as "public can execute a security-definer function" — that's the
+intended design, not a gap.
+
+Client-side, `localStorage` remembers which post/emoji pairs and which
+reports a given browser has already sent, purely to grey out buttons after
+use — it's a soft nicety, not a security control (there's no auth, so a
+determined visitor could still spam via a fresh browser/incognito window;
+not worth solving before there's real traffic to justify it).
 
 ## For the daily build-in-public agent
 
