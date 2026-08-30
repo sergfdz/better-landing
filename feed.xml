@@ -8,17 +8,17 @@
 
     <item>
       <title>Gambling is the hidden addiction — here's what we built against it</title>
-      <link>https://bet-ter.me/journal/2026-08-30.html</link>
-      <guid>https://bet-ter.me/journal/2026-08-30.html</guid>
-      <pubDate>Sun, 30 Aug 2026 07:00:00 GMT</pubDate>
+      <link>https://bet-ter.me/journal/intro.html</link>
+      <guid>https://bet-ter.me/journal/intro.html</guid>
+      <pubDate>Sun, 30 Aug 2026 07:05:00 GMT</pubDate>
       <description><![CDATA[Gambling addiction doesn't leave marks. No needle marks, no smell on someone's breath, nothing a blood test picks up. They call it the hidden addiction for exactly that reason — someone can be falling apart financially and emotionally while looking completely fine from the outside.]]></description>
     </item>
 
     <item>
       <title>Seventeen empty screens, and a color palette that isn't red or blue</title>
-      <link>https://bet-ter.me/journal/2026-08-24.html</link>
-      <guid>https://bet-ter.me/journal/2026-08-24.html</guid>
-      <pubDate>Mon, 24 Aug 2026 07:00:00 GMT</pubDate>
+      <link>https://bet-ter.me/journal/2026-08-30.html</link>
+      <guid>https://bet-ter.me/journal/2026-08-30.html</guid>
+      <pubDate>Sun, 30 Aug 2026 07:00:00 GMT</pubDate>
       <description><![CDATA[Day one. Foundation work — the unglamorous kind that doesn't produce anything a screenshot can sell, but that everything else sits on top of. A Kotlin Multiplatform project from scratch: one shared module targeting Android and iOS, Compose Multiplatform for the UI, Koin wired in for dependency injection instead of reaching for something heavier.]]></description>
     </item>
   </channel>

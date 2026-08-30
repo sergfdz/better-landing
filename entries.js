@@ -4,6 +4,9 @@
 // newest reads first without needing extra sort logic to get it right):
 //   {
 //     date: "YYYY-MM-DD",       // the day this entry is "about", not necessarily the commit date
+//     slug: "some-slug",        // optional -- overrides `date` as the journal/*.html filename,
+//                                // only needed when two entries share the same date (e.g. a
+//                                // one-time intro post published the same day as diary day 1)
 //     title: "Short, human title — not a changelog line",
 //     tags: ["product" | "engineering" | "design" | "story"],
 //     body: [
@@ -20,6 +23,7 @@
 const JOURNAL_ENTRIES = [
   {
     date: "2026-08-30",
+    slug: "intro",
     title: "Gambling is the hidden addiction — here's what we built against it",
     tags: ["product", "story"],
     body: [
@@ -30,7 +34,7 @@ const JOURNAL_ENTRIES = [
     ],
   },
   {
-    date: "2026-08-24",
+    date: "2026-08-30",
     title: "Seventeen empty screens, and a color palette that isn't red or blue",
     tags: ["engineering", "design"],
     body: [

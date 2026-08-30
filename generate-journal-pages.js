@@ -32,7 +32,7 @@ function excerpt(str, max = 155) {
 function entryPageHtml(entry) {
   const plainTitle = stripHtml(entry.title);
   const description = excerpt(entry.body[0]);
-  const url = `${SITE_URL}/journal/${entry.date}.html`;
+  const url = `${SITE_URL}/journal/${entry.slug || entry.date}.html`;
   const bodyHtml = entry.body.map((p) => `      <p>${p}</p>`).join("\n");
   const tagsHtml = entry.tags.map((t) => `<span class="tag">${t}</span>`).join("");
 
@@ -94,7 +94,8 @@ ${bodyHtml}
 if (!fs.existsSync(OUT_DIR)) fs.mkdirSync(OUT_DIR);
 
 for (const entry of JOURNAL_ENTRIES) {
-  const outPath = path.join(OUT_DIR, `${entry.date}.html`);
+  const slug = entry.slug || entry.date;
+  const outPath = path.join(OUT_DIR, `${slug}.html`);
   fs.writeFileSync(outPath, entryPageHtml(entry), "utf8");
-  console.log(`wrote journal/${entry.date}.html`);
+  console.log(`wrote journal/${slug}.html`);
 }

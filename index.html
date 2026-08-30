@@ -81,14 +81,15 @@
         ? `<div class="entry-rest" hidden>${rest.map((p) => `<p>${p}</p>`).join("")}</div>
            <button type="button" class="read-more-btn">Read more</button>`
         : "";
+      const slug = entry.slug || entry.date;
       return `
-        <article class="card entry" id="${entry.date}">
+        <article class="card entry" id="${slug}">
           <div class="entry-date">${entry.date}</div>
           <h3>${entry.title}</h3>
           <p>${first}</p>
           ${restHtml}
           <div class="entry-tags">${tagsHtml}</div>
-          <a href="journal/${entry.date}.html" style="display:inline-block; margin-top:10px; font-size:0.82rem; color:var(--ink-soft); text-decoration:underline;">Permalink / share this entry</a>
+          <a href="journal/${slug}.html" style="display:inline-block; margin-top:10px; font-size:0.82rem; color:var(--ink-soft); text-decoration:underline;">Permalink / share this entry</a>
         </article>
       `;
     }
