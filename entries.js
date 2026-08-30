@@ -33,16 +33,6 @@ const JOURNAL_ENTRIES = [
       "Underneath that status panel is everything it's actually reporting on. Self-exclusion — Protect Me — links out to the real, official registry where one exists (Spain's RGIAJ right now), never runs its own; everywhere else it says \"coming soon\" honestly instead of pretending, and shows the real National Council on Problem Gambling helpline for the US in the meantime. Trusted-contact alerts email one person you choose if new gambling activity shows up, gently, not as a surveillance report. Notifications carry the intervention engine's supportive nudges when a risk pattern shows up, never a shaming one. And bank monitoring, gambling detection, and risk alerts are always on the moment a bank is connected — nothing to configure, just something to disclose. Nothing here is medical advice or a diagnosis. It's an attempt at the opposite of what makes this addiction dangerous: something that stays visible, on your side, and never lets the pattern hide.",
     ],
   },
-  {
-    date: "2026-08-30",
-    title: "Seventeen empty screens, and a color palette that isn't red or blue",
-    tags: ["engineering", "design"],
-    body: [
-      "Day one. Foundation work — the unglamorous kind that doesn't produce anything a screenshot can sell, but that everything else sits on top of. A Kotlin Multiplatform project from scratch: one shared module targeting Android and iOS, Compose Multiplatform for the UI, Koin wired in for dependency injection instead of reaching for something heavier.",
-      "Before writing a single line of the actual behavioral logic, we got all ~17 MVP screens up as a real, navigable shell on Android — empty states, but a real nav graph you can click through end to end. It's a small discipline thing: build the skeleton the whole app has to hang off of first, so every feature after this lands in a place that already makes sense.",
-      "The other decision today was the palette. Most apps in this space default to one of two moods: alarm-red (because \"gambling = danger\"), or generic corporate banking blue. We didn't want either — this app is supposed to feel calm, not clinical, so we picked a forest green with a warm gold accent and a cream background instead. Deliberately not a casino color, deliberately not a bank color. Small choice, but it sets the tone for everything that gets designed on top of it.",
-    ],
-  },
 ];
 
 // Node-only export for generate-journal-pages.js -- `module` doesn't exist
