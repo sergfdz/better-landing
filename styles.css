@@ -6,8 +6,6 @@
   --border: #e6e9ec;
   --ink: #1c1c1a;
   --ink-soft: #5b5b57;
-  --logo-muted: #9a9a9a;
-  --logo-blue: #4a86e8;
   --max-width: 720px;
 }
 
@@ -53,25 +51,21 @@ header.site {
 }
 
 .wordmark {
-  text-decoration: none;
-  font-weight: 800;
-  font-size: 2.4rem;
+  display: inline-block;
+  line-height: 0;
 }
 
-/* Plain body-text mentions of the name: just a strike on "Bet", no color change. */
+.wordmark img {
+  height: 34px;
+  width: auto;
+  display: block;
+}
+
+/* Plain body-text mentions of the name: just a strike on "bet", no color change. */
 .bet {
   text-decoration: line-through;
   text-decoration-thickness: 0.09em;
   text-decoration-skip-ink: none;
-}
-
-/* The header wordmark is the one place the name is also color-coded. */
-.wordmark .bet {
-  color: var(--logo-muted);
-}
-
-.wordmark .ter {
-  color: var(--logo-blue);
 }
 
 nav.site-nav {
