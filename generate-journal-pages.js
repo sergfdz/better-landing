@@ -61,7 +61,7 @@ function entryPageHtml(entry) {
   <header class="site">
     <div class="wrap header-row">
       <a class="wordmark" href="../index.html">
-        <span class="bet">Bet</span><span class="ter">ter</span>
+        <span class="bet">bet</span><span class="ter">ter</span>
       </a>
       <nav class="site-nav">
         <a href="../index.html#journal">Journal</a>
@@ -104,7 +104,7 @@ ${bodyHtml}
   </main>
 
   <footer class="site">
-    <div class="wrap"><span class="bet">Bet</span><span class="ter">ter</span> — a free financial accountability companion. Not a diagnosis, not medical advice.</div>
+    <div class="wrap"><span class="bet">bet</span><span class="ter">ter</span> — a free financial accountability companion. Not a diagnosis, not medical advice.</div>
   </footer>
 
   <script src="../journal-comments.js"></script>
