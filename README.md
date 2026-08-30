@@ -12,9 +12,9 @@ per the original plan).
 
 - `index.html` — the homepage: sticky header + waitlist bar, coming-soon
   store badges, and the full journal underneath (`#journal`), one entry per
-  card, newest first, each collapsed to its first paragraph with a "Read
-  more" toggle. There's no separate journal page anymore — everything lives
-  here.
+  card, newest first, each showing its first paragraph plus a "Read more"
+  link and a "Comments (N)" count, both pointing at that entry's own page.
+  There's no separate journal page anymore — everything lives here.
 - `story.html` — placeholder for the personal story behind the app. Edit
   the `<p class="lede">` (and surrounding markup) by hand when ready — this
   one is not touched by the automated journal entries.
@@ -24,8 +24,11 @@ per the original plan).
   in sync by hand alongside it.
 - `journal/YYYY-MM-DD.html` — one standalone, shareable page per entry, each
   with its own `<title>`/Open Graph tags (the single `index.html` can only
-  ever have one). Generated from `entries.js`, not written by hand — see
-  "Per-entry pages" below.
+  ever have one) and a comment thread. Generated from `entries.js`, not
+  written by hand — see "Per-entry pages" below.
+- `journal-comments.js` — the comment thread on each per-entry page (see
+  "Journal comments" below). Like the experiences board, this content is
+  live user data in Supabase, not a file in this repo.
 - `experiences.html` / `experiences.js` — the community experiences board
   (see "Experiences board" below). Unlike the journal, this content is
   live user data in Supabase, not a file in this repo.
@@ -177,6 +180,62 @@ reports a given browser has already sent, purely to grey out buttons after
 use — it's a soft nicety, not a security control (there's no auth, so a
 determined visitor could still spam via a fresh browser/incognito window;
 not worth solving before there's real traffic to justify it).
+
+## Journal comments
+
+Each entry's own page (`journal/YYYY-MM-DD.html`) has a comment thread at
+the bottom, wired up by `journal-comments.js` against the same Supabase
+project as the waitlist and experiences board. It's intentionally **not**
+on the homepage feed (`index.html`) — the feed only shows a "Comments (N)"
+count on each card, linking to the entry page's comment section, matching
+the "read the whole entry on its own page" model added alongside per-entry
+pages.
+
+Same no-queue, publish-then-report moderation model as the experiences
+board: comments go live instantly, anyone can hit "Report" (insert-only,
+can't be read back through the public API), and you hide one by hand by
+flipping its `hidden` column to `true` in the Supabase table editor.
+
+Needs two new tables, added the same way as `waitlist_signups`:
+
+```sql
+create table journal_comments (
+  id bigint generated always as identity primary key,
+  entry_slug text not null,
+  body text not null,
+  is_anonymous boolean not null default true,
+  display_name text,
+  hidden boolean not null default false,
+  created_at timestamptz not null default now()
+);
+
+alter table journal_comments enable row level security;
+
+create policy "anyone can read visible journal comments" on journal_comments
+  for select using (hidden = false);
+
+create policy "anon can insert journal comments" on journal_comments
+  for insert to anon
+  with check (true);
+
+create table journal_comment_reports (
+  id bigint generated always as identity primary key,
+  comment_id bigint not null references journal_comments(id),
+  created_at timestamptz not null default now()
+);
+
+alter table journal_comment_reports enable row level security;
+
+create policy "anon can insert journal comment reports" on journal_comment_reports
+  for insert to anon
+  with check (true);
+```
+
+`entry_slug` matches each entry's `slug` (or `date` when no `slug` is set)
+from `entries.js` — plain text, not a foreign key, since journal entries
+are static content in this repo, not rows in Supabase. No `select` policy
+on `journal_comment_reports`, same reasoning as `experience_reports`: the
+anon key can add a report but never read one back.
 
 ## For the daily build-in-public agent
 

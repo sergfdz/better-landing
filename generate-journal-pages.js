@@ -81,11 +81,31 @@ function entryPageHtml(entry) {
 ${bodyHtml}
       <div class="entry-tags">${tagsHtml}</div>
     </article>
+
+    <section class="card" id="journal-comments-section" style="margin: 0 0 40px;">
+      <h3 style="margin-top:0;">Comments</h3>
+      <form id="journal-comment-form">
+        <textarea name="body" required maxlength="2000" rows="3" placeholder="Add a comment..."
+          style="width:100%; padding:12px; border-radius:12px; border:1px solid var(--border); font-family:inherit; font-size:0.95rem; resize:vertical;"></textarea>
+        <div style="display:flex; align-items:center; gap:12px; margin-top:12px; flex-wrap:wrap;">
+          <label style="display:flex; align-items:center; gap:6px; font-size:0.9rem;">
+            <input type="checkbox" name="is_anonymous" checked />
+            Post anonymously
+          </label>
+          <input type="text" name="display_name" placeholder="Your name" maxlength="60"
+            style="display:none; padding:9px 14px; border-radius:999px; border:1px solid var(--border); font-family:inherit; font-size:0.9rem;" />
+          <button type="submit" class="button primary" style="margin-left:auto; border:none; cursor:pointer; font-family:inherit;">Comment</button>
+        </div>
+      </form>
+      <div id="journal-comments-list" data-entry-slug="${entry.slug || entry.date}" style="margin-top:20px;"></div>
+    </section>
   </main>
 
   <footer class="site">
     <div class="wrap"><span class="bet">Bet</span><span class="ter">ter</span> — a free financial accountability companion. Not a diagnosis, not medical advice.</div>
   </footer>
+
+  <script src="../journal-comments.js"></script>
 </body>
 </html>
 `;

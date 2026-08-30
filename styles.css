@@ -260,6 +260,10 @@ nav.site-nav a:hover {
   text-decoration: underline;
 }
 
+.comments-count-link:hover {
+  text-decoration: underline;
+}
+
 .button {
   display: inline-block;
   text-decoration: none;
