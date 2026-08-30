@@ -22,7 +22,7 @@
 
 const JOURNAL_ENTRIES = [
   {
-    date: "2026-08-30",
+    date: "2026-08-29",
     slug: "intro",
     title: "Gambling is the hidden addiction — here's what we built against it",
     tags: ["product", "story"],
