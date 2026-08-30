@@ -22,6 +22,10 @@ per the original plan).
   array, newest entry first. See the schema comment at the top of the file.
 - `feed.xml` — RSS feed mirroring `entries.js`, one `<item>` per entry, kept
   in sync by hand alongside it.
+- `journal/YYYY-MM-DD.html` — one standalone, shareable page per entry, each
+  with its own `<title>`/Open Graph tags (the single `index.html` can only
+  ever have one). Generated from `entries.js`, not written by hand — see
+  "Per-entry pages" below.
 - `experiences.html` / `experiences.js` — the community experiences board
   (see "Experiences board" below). Unlike the journal, this content is
   live user data in Supabase, not a file in this repo.
@@ -117,6 +121,25 @@ an email at all.
 whoever/whatever adds an entry should add the matching RSS item in the same
 commit (see the daily-agent instructions below).
 
+## Per-entry pages
+
+Each journal entry also gets its own real page at `journal/YYYY-MM-DD.html`,
+so it can be shared/linked individually with a correct social preview
+(title, description, Open Graph/Twitter card) instead of the generic
+`index.html` one. These files are **generated, not hand-written** —
+whenever `entries.js` changes, regenerate them:
+
+```
+node generate-journal-pages.js
+```
+
+No dependencies, no npm install — plain Node using only `fs`. This is the
+one build step in an otherwise buildless site; the generated `journal/*.html`
+files are still committed as plain static files like everything else, just
+not edited by hand. `index.html`'s own entry cards link to
+`journal/<date>.html` as a "Permalink / share this entry" link, and
+`feed.xml`'s `<link>`/`<guid>` point there too.
+
 ## Experiences board
 
 `experiences.html` is a small public board where visitors post their own
@@ -161,8 +184,10 @@ not worth solving before there's real traffic to justify it).
    `entries.js`, matching the existing schema.
 2. Add a matching `<item>` near the top of `feed.xml` (same title/date,
    `description` can be the entry's first paragraph, link/guid pointing at
-   `https://bet-ter.me/index.html#YYYY-MM-DD`).
-3. Commit both files together on the **`drafts` branch** (never `master`)
+   `https://bet-ter.me/journal/YYYY-MM-DD.html`).
+3. Run `node generate-journal-pages.js` to regenerate `journal/*.html` and
+   commit the new file it writes alongside the two above.
+4. Commit all of it together on the **`drafts` branch** (never `master`)
    and push. Don't touch `index.html`, `story.html`, or `styles.css` — the
    homepage already renders whatever is in `entries.js` automatically.
 
