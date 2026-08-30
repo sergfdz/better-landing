@@ -77,17 +77,16 @@
     function entryHtml(entry) {
       const [first, ...rest] = entry.body;
       const tagsHtml = entry.tags.map((t) => `<span class="tag">${t}</span>`).join("");
-      const restHtml = rest.length
-        ? `<div class="entry-rest" hidden>${rest.map((p) => `<p>${p}</p>`).join("")}</div>
-           <button type="button" class="read-more-btn">Read more</button>`
-        : "";
       const slug = entry.slug || entry.date;
+      const readMoreHtml = rest.length
+        ? `<a href="journal/${slug}.html" class="read-more-btn">Read more</a>`
+        : "";
       return `
         <article class="card entry" id="${slug}">
           <div class="entry-date">${entry.date}</div>
-          <h3>${entry.title}</h3>
+          <h3><a href="journal/${slug}.html" class="entry-title-link">${entry.title}</a></h3>
           <p>${first}</p>
-          ${restHtml}
+          ${readMoreHtml}
           <div class="entry-tags">${tagsHtml}</div>
           <a href="journal/${slug}.html" style="display:inline-block; margin-top:10px; font-size:0.82rem; color:var(--ink-soft); text-decoration:underline;">Permalink / share this entry</a>
         </article>
@@ -99,15 +98,6 @@
     } else {
       container.innerHTML = JOURNAL_ENTRIES.map(entryHtml).join("");
     }
-
-    container.addEventListener("click", (e) => {
-      const button = e.target.closest(".read-more-btn");
-      if (!button) return;
-      const rest = button.previousElementSibling;
-      const expanded = !rest.hidden;
-      rest.hidden = expanded;
-      button.textContent = expanded ? "Read more" : "Read less";
-    });
   </script>
 </body>
 </html>
