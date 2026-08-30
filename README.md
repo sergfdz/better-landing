@@ -202,9 +202,9 @@ Needs two new tables, added the same way as `waitlist_signups`:
 create table journal_comments (
   id bigint generated always as identity primary key,
   entry_slug text not null,
-  body text not null,
+  body text not null check (char_length(trim(body)) between 1 and 2000),
   is_anonymous boolean not null default true,
-  display_name text,
+  display_name text check (display_name is null or char_length(display_name) <= 60),
   hidden boolean not null default false,
   created_at timestamptz not null default now()
 );
@@ -236,6 +236,34 @@ from `entries.js` — plain text, not a foreign key, since journal entries
 are static content in this repo, not rows in Supabase. No `select` policy
 on `journal_comment_reports`, same reasoning as `experience_reports`: the
 anon key can add a report but never read one back.
+
+**Anti-spam.** The `anon` key is public (it ships in `journal-comments.js`),
+so anyone can hit the Supabase REST API directly without going through the
+site's form at all. Three lightweight layers, none of which need a backend:
+
+- A `check` constraint on `body`/`display_name` length at the database
+  level (above) — the form's `maxlength` is client-side only and means
+  nothing to a direct API request. If the table already exists from before
+  this was added, apply it with:
+  ```sql
+  alter table journal_comments
+    add constraint journal_comments_body_length check (char_length(trim(body)) between 1 and 2000),
+    add constraint journal_comments_display_name_length check (display_name is null or char_length(display_name) <= 60);
+  ```
+- A honeypot field (`name="website"`) hidden off-screen with CSS in the
+  comment form. Real visitors never see or fill it; simple bots that
+  auto-fill every field do. `journal-comments.js` silently drops the
+  submission if it's non-empty.
+- A time trap: the submit handler ignores anything submitted less than 2
+  seconds after the page loaded, since no human reads a "Add a comment"
+  box and writes a reply that fast.
+
+None of this stops a determined, targeted attacker — that would need a
+CAPTCHA (e.g. Cloudflare Turnstile) behind a Supabase Edge Function that
+verifies the token before inserting, which is a bigger lift than this
+otherwise-static site currently needs. These three layers are meant to
+filter out generic comment-spam bots, which is the actual threat model for
+a low-traffic page like this one.
 
 ## For the daily build-in-public agent
 

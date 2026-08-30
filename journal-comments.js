@@ -106,8 +106,16 @@ async function handleReport(button) {
   }
 }
 
-async function handleCommentSubmit(form, slug, list) {
+async function handleCommentSubmit(form, slug, list, loadedAt) {
   const formData = new FormData(form);
+
+  // Honeypot: a field hidden from real visitors via CSS that simple bots
+  // fill in anyway. Time trap: no human reads and answers a comment box
+  // in under 2 seconds. Fail either check and just drop the submission --
+  // no error, nothing worth telling a bot.
+  if (formData.get("website")) return;
+  if (Date.now() - loadedAt < 2000) return;
+
   const isAnonymous = formData.get("is_anonymous") === "on";
   const body = formData.get("body").trim();
   if (!body) return;
@@ -138,12 +146,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("journal-comment-form");
   if (!list || !form) return;
   const slug = list.dataset.entrySlug;
+  const loadedAt = Date.now();
 
   wireIdentityToggle(form);
 
   form.addEventListener("submit", (e) => {
     e.preventDefault();
-    handleCommentSubmit(form, slug, list);
+    handleCommentSubmit(form, slug, list, loadedAt);
   });
 
   list.addEventListener("click", (e) => {
