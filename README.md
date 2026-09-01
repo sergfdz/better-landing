@@ -36,9 +36,7 @@ per the original plan).
   Service, linked from every page's footer. These are the real,
   permanent URLs (`bet-ter.me/privacy.html`, `bet-ter.me/terms.html`) to
   give the App Store / Play Store listings, instead of a claude.ai
-  artifact link. Edit by hand when the content needs to change; the
-  "Governing law" section in `terms.html` still has a placeholder
-  jurisdiction to fill in before submitting to the stores.
+  artifact link. Edit by hand when the content needs to change.
 - `styles.css` — shared design tokens (the same forest/gold/cream palette as
   the Bet-ter app itself) and component styles.
 - `assets/favicon.svg` — the coin mark, matches the app's launcher icon.
