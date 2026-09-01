@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — B̶e̶t̶ter</title>
+  <meta name="description" content="How better collects, uses, and protects your data." />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site">
+    <div class="wrap header-row">
+      <a class="wordmark" href="index.html">
+        <img src="assets/logo-better.png" alt="better" />
+      </a>
+      <nav class="site-nav">
+        <a href="index.html#journal">Journal</a>
+        <a href="experiences.html">Share your experience</a>
+        <a href="story.html">Our story</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap-wide">
+    <div class="legal-masthead">
+      <p class="legal-eyebrow">Privacy Policy</p>
+      <h1 class="legal-title" id="top">How better handles your data</h1>
+      <p class="legal-dek">Bet-ter connects to your bank to notice gambling activity and help you stay accountable. This page explains exactly what we collect, why, who we share it with, and how to delete it — in plain language first, full detail below.</p>
+      <div class="legal-summary">
+        <p><strong>The short version:</strong> we read your transactions (via Plaid) to detect gambling activity, so we never ask what you're spending on outside that. We never sell your data or show you ads. If you add a trusted contact, the only thing they ever receive is "activity was detected, please check in" — never your transactions, balances, or amounts.</p>
+        <p>You can disconnect your bank, remove your trusted contact, or delete your entire account and all its data at any time from Settings, in one action.</p>
+      </div>
+    </div>
+
+    <div class="legal-grid">
+      <nav class="legal-toc" aria-label="Sections">
+        <p class="legal-toc-label">Contents</p>
+        <ol>
+          <li><a href="#scope">01 — Scope</a></li>
+          <li><a href="#collect">02 — What we collect</a></li>
+          <li><a href="#use">03 — How we use it</a></li>
+          <li><a href="#share">04 — Who we share it with</a></li>
+          <li><a href="#retention">05 — Retention</a></li>
+          <li><a href="#rights">06 — Your rights</a></li>
+          <li><a href="#deletion">07 — Deleting your account</a></li>
+          <li><a href="#security">08 — Security</a></li>
+          <li><a href="#children">09 — Children</a></li>
+          <li><a href="#transfers">10 — International transfers</a></li>
+          <li><a href="#changes">11 — Changes</a></li>
+          <li><a href="#contact">12 — Contact</a></li>
+        </ol>
+      </nav>
+
+      <div class="legal-body">
+
+        <section id="scope">
+          <span class="legal-sec-num">01</span>
+          <h2>Scope</h2>
+          <p>This policy covers the Bet-ter mobile app (iOS and Android) and its backend. It applies to anyone who creates a Bet-ter account. Bet-ter is built and operated by an independent developer, not a bank, lender, or gambling operator — see the <a href="terms.html">Terms of Service</a> for what Bet-ter is and isn't.</p>
+          <p>Bet-ter is intended for adults (18+). We don't knowingly collect data from anyone under 18 — see <a href="#children">Section 9</a>.</p>
+        </section>
+
+        <section id="collect">
+          <span class="legal-sec-num">02</span>
+          <h2>What we collect</h2>
+          <p>We collect only what each feature genuinely needs to work. Nothing below is used for advertising, and we don't run any analytics or tracking SDK in the app.</p>
+
+          <div class="legal-table-wrap">
+          <table class="legal-table">
+            <caption>Data categories and their source</caption>
+            <tr><th>Category</th><th>What it includes</th><th>Where it comes from</th></tr>
+            <tr><td>Account</td><td>Your email address, used to sign in via a one-time code (no password).</td><td>You, at sign-up.</td></tr>
+            <tr><td>Bank connection</td><td>Institution name, account type/last four digits, and transactions (merchant, amount, category, date/time).</td><td>Your bank, via Plaid, once you connect an account.</td></tr>
+            <tr><td>Gambling detection</td><td>Which of your transactions were classified as gambling activity, and the day-of-week/time-of-day pattern used to detect risk windows.</td><td>Computed by us from your transaction data.</td></tr>
+            <tr><td>Trusted contact</td><td>The name and email address of one person you choose to add.</td><td>You, if you choose to add one.</td></tr>
+            <tr><td>Self-exclusion</td><td>Which country's official self-exclusion program you selected, and whether you confirmed you've enrolled.</td><td>You, if you use this feature.</td></tr>
+            <tr><td>Check-in journal</td><td>A daily mood selection and an optional free-text note.</td><td>You, if you use this feature.</td></tr>
+            <tr><td>Notifications</td><td>A push-notification token tied to your device.</td><td>Generated by your device once you allow notifications.</td></tr>
+            <tr><td>Purchases</td><td>Subscription/purchase status and an anonymous purchaser ID (not your name or card number — that stays with Apple/Google).</td><td>Apple App Store / Google Play, via RevenueCat.</td></tr>
+            <tr><td>Technical</td><td>Standard server request logs (IP address, timestamps) kept briefly for security and debugging.</td><td>Generated automatically by our infrastructure.</td></tr>
+          </table>
+          </div>
+
+          <p>We never see your bank login credentials — those go directly to Plaid and your bank, never through Bet-ter.</p>
+        </section>
+
+        <section id="use">
+          <span class="legal-sec-num">03</span>
+          <h2>How we use it</h2>
+          <ul>
+            <li>To detect gambling transactions and calculate your risk score, streak, and recurring risk windows.</li>
+            <li>To send you a notification or email when new gambling activity is detected.</li>
+            <li>To notify your trusted contact when activity is detected, if you've added one.</li>
+            <li>To show you your own transaction history and check-in journal inside the app.</li>
+            <li>To point you to the correct official self-exclusion program for your country, if you ask for one.</li>
+            <li>To process purchases and keep your subscription status current.</li>
+            <li>To keep the service secure, debug problems, and prevent abuse.</li>
+          </ul>
+          <p>We don't use your data to train third-party AI models, and we don't sell it or rent it to anyone.</p>
+        </section>
+
+        <section id="share">
+          <span class="legal-sec-num">04</span>
+          <h2>Who we share it with</h2>
+          <p>We use a small number of infrastructure providers to run Bet-ter. Each only receives what it needs to do its job:</p>
+          <ul>
+            <li><strong>Plaid</strong> — connects to your bank and provides transaction data. Plaid's own privacy policy governs how it handles your banking credentials and data in transit.</li>
+            <li><strong>Supabase</strong> — hosts our database, authentication, and backend functions. All your account data is stored here, access-controlled so only your own signed-in account can read it.</li>
+            <li><strong>RevenueCat</strong> — manages subscriptions/purchases on our behalf, in coordination with Apple and Google's own billing systems.</li>
+            <li><strong>OneSignal</strong> — delivers push notifications to your device.</li>
+            <li><strong>Resend</strong> — delivers transactional emails (your sign-in code, and the trusted-contact notification).</li>
+            <li><strong>Your trusted contact</strong> — if you add one, they receive a short email when gambling activity is detected. That email never includes your name, transaction amounts, merchants, or any financial detail — only that "an account that has you listed as a trusted contact" may be struggling and could use a check-in.</li>
+          </ul>
+          <p>We don't share your data with data brokers, advertisers, or anyone outside this list, and we never share it for marketing purposes.</p>
+        </section>
+
+        <section id="retention">
+          <span class="legal-sec-num">05</span>
+          <h2>Retention</h2>
+          <p>We keep your data for as long as your account is active, so the app can show your history and detect patterns over time. If you disconnect your bank, we stop pulling new transactions but keep what's already synced until you delete your account or that data individually. Server request logs are kept briefly (a matter of weeks) and then rotated out automatically.</p>
+        </section>
+
+        <section id="rights">
+          <span class="legal-sec-num">06</span>
+          <h2>Your rights</h2>
+          <p>Wherever you are, you can, directly in the app:</p>
+          <ul>
+            <li>See and export your own transaction and check-in history.</li>
+            <li>Disconnect your bank connection at any time.</li>
+            <li>Remove or change your trusted contact.</li>
+            <li>Turn off push notifications from your device settings.</li>
+            <li>Delete your account entirely (see <a href="#deletion">Section 7</a>).</li>
+          </ul>
+          <p>If you're in the EU/UK, you additionally have rights under GDPR to access, correct, restrict, or object to our processing of your data, and to data portability — all of which route through the same in-app controls or the contact below. If you're a California resident, you have equivalent rights under the CCPA/CPRA; we don't sell personal information as defined by that law.</p>
+        </section>
+
+        <section id="deletion">
+          <span class="legal-sec-num">07</span>
+          <h2>Deleting your account</h2>
+          <p>"Delete account" in Settings is permanent and immediate. It:</p>
+          <ul>
+            <li>Revokes our access to your bank connection at Plaid, so the connection is actually severed, not just hidden.</li>
+            <li>Deletes your transactions, gambling-detection history, trusted contact, self-exclusion selection, and check-in journal.</li>
+            <li>Deletes your account and sign-in identity.</li>
+          </ul>
+          <p>There's no recovery period and no partial deletion — everything tied to your account is removed in the same action.</p>
+        </section>
+
+        <section id="security">
+          <span class="legal-sec-num">08</span>
+          <h2>Security</h2>
+          <p>Your data is encrypted in transit (TLS) and at rest. Access to your account data is restricted at the database level so that only your own authenticated session can read or write it — this is enforced by the database itself, not just the app. Bank credentials never pass through our servers; only Plaid's tokenized access, which we can revoke at any time, does.</p>
+        </section>
+
+        <section id="children">
+          <span class="legal-sec-num">09</span>
+          <h2>Children</h2>
+          <p>Bet-ter is not directed at, and we don't knowingly collect data from, anyone under 18. If you believe a minor has created an account, contact us and we'll delete it.</p>
+        </section>
+
+        <section id="transfers">
+          <span class="legal-sec-num">10</span>
+          <h2>International transfers</h2>
+          <p>Our infrastructure providers may process data in countries other than your own, including the United States. Where required, we rely on those providers' own standard safeguards (such as Standard Contractual Clauses) for cross-border transfers.</p>
+        </section>
+
+        <section id="changes">
+          <span class="legal-sec-num">11</span>
+          <h2>Changes to this policy</h2>
+          <p>If we make a material change, we'll update the effective date below and, where required, notify you in the app before it takes effect.</p>
+        </section>
+
+        <section id="contact">
+          <span class="legal-sec-num">12</span>
+          <h2>Contact</h2>
+          <div class="legal-contact">
+            <h2>Questions about your data?</h2>
+            <p>Reach out any time and we'll get back to you.</p>
+            <a href="mailto:checkin@bet-ter.me">checkin@bet-ter.me</a>
+            <div><a class="legal-cross-link" href="terms.html">Terms of Service →</a></div>
+          </div>
+        </section>
+
+      </div>
+    </div>
+
+    <p class="legal-footer-note">Effective date: September 1, 2026. Bet-ter — a support layer around your own accountability, not a substitute for professional help or official self-exclusion programs.</p>
+  </main>
+
+  <footer class="site">
+    <div class="wrap">
+      <span class="bet">bet</span><span class="ter">ter</span> — a free financial accountability companion. Not a diagnosis, not medical advice.
+      <div class="footer-links"><a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a></div>
+    </div>
+  </footer>
+</body>
+</html>
