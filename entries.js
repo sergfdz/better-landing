@@ -38,10 +38,35 @@ const JOURNAL_ENTRIES = [
     title: "One shared core, two phones: the first decision, and why it wasn't purely technical",
     tags: ["engineering", "product"],
     body: [
-      "Before any of this had a shared module or even a name that stuck, it was a much simpler idea: watch someone's real bank activity for gambling, and tell them the truth about it instead of leaving that to memory or denial. Not a blocker, not a lecture. Just something that reads what your bank already knows and finally says it out loud. Everything since has been in service of that one idea. This entry is about how it actually started getting built.",
-      "The first real decision had nothing to do with gambling detection. It was picking Kotlin Multiplatform before writing a single screen. One shared module holds the behavioral engine, the risk scoring, the classifier — all of it — compiled natively for Android and iOS instead of written twice. Compose Multiplatform handles the UI on both, Koin wires up dependency injection. I'm one person building this in a few weeks. Writing the real logic once and never touching it again per platform wasn't a nice-to-have, it was the only way the timeline works at all.",
-      "It wasn't a decision made in a vacuum either. Shipaton has a Ship Kotlin Everywhere category this year, judged specifically on a polished app built for both iOS and Android with KMP, and seeing that confirmed a call I'd already leaned toward for purely practical reasons. I'd rather say that plainly than pretend the categories had nothing to do with it. Some of what gets built here is shaped by wanting this to also hold up as a real submission for Ship Kotlin Everywhere and the Peace Prize, not just a personal project that happened to exist during Shipaton.",
-      "What actually exists after this: one shared module compiling clean on both targets, and all ~17 MVP screens up as a real, empty, navigable shell. No behavioral logic yet, nothing to screenshot. But everything built after this lands somewhere that already makes sense, on both phones, from the same code.",
+      "Right now, before any of this has a shared module or even a name that's stuck, it's still a simple idea: watch someone's real bank activity for gambling, and tell them the truth about it instead of leaving that to memory or denial. Not a blocker, not a lecture. Just something that reads what your bank already knows and finally says it out loud. Everything today is in service of that one idea — this is the day it actually starts getting built.",
+      "The first real decision today has nothing to do with gambling detection. It's picking Kotlin Multiplatform before writing a single screen. One shared module is going to hold the behavioral engine, the risk scoring, the classifier — all of it — compiled natively for Android and iOS instead of written twice. Compose Multiplatform handles the UI on both, Koin wires up dependency injection. I'm one person building this in a few weeks, so writing the real logic once and never touching it again per platform isn't a nice-to-have, it's the only way the timeline works at all.",
+      "<svg class='arch-diagram' viewBox='0 0 600 340' xmlns='http://www.w3.org/2000/svg' role='img' aria-label='Architecture diagram: bank transaction data flows into a shared Kotlin Multiplatform core (classifier, risk scoring, behavioral engine, wired with Koin), which is consumed separately by the Android app built with Jetpack Compose and the iOS app built with Compose Multiplatform.'>" +
+      "<defs><marker id='archArrow' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' class='arch-arrowhead'></path></marker></defs>" +
+      "<line x1='300' y1='72' x2='300' y2='106' class='arch-arrow' marker-end='url(#archArrow)'></line>" +
+      "<line x1='300' y1='220' x2='300' y2='240' class='arch-arrow'></line>" +
+      "<line x1='300' y1='240' x2='172' y2='266' class='arch-arrow' marker-end='url(#archArrow)'></line>" +
+      "<line x1='300' y1='240' x2='428' y2='266' class='arch-arrow' marker-end='url(#archArrow)'></line>" +
+      "<rect x='200' y='16' width='200' height='56' rx='10' class='arch-box'></rect>" +
+      "<text x='300' y='40' text-anchor='middle' class='arch-label'>Your bank</text>" +
+      "<text x='300' y='58' text-anchor='middle' class='arch-sublabel'>transactions, via Plaid</text>" +
+      "<rect x='60' y='110' width='480' height='110' rx='10' class='arch-box'></rect>" +
+      "<text x='300' y='132' text-anchor='middle' class='arch-label'>Shared module — commonMain</text>" +
+      "<rect x='75' y='148' width='140' height='44' rx='8' class='arch-box-accent'></rect>" +
+      "<text x='145' y='175' text-anchor='middle' class='arch-sublabel'>Classifier</text>" +
+      "<rect x='230' y='148' width='140' height='44' rx='8' class='arch-box-accent'></rect>" +
+      "<text x='300' y='175' text-anchor='middle' class='arch-sublabel'>Risk scoring</text>" +
+      "<rect x='385' y='148' width='140' height='44' rx='8' class='arch-box-accent'></rect>" +
+      "<text x='455' y='175' text-anchor='middle' class='arch-sublabel'>Behavioral engine</text>" +
+      "<text x='300' y='207' text-anchor='middle' class='arch-sublabel'>wired together with Koin</text>" +
+      "<rect x='70' y='270' width='200' height='56' rx='10' class='arch-box'></rect>" +
+      "<text x='170' y='294' text-anchor='middle' class='arch-label'>Android</text>" +
+      "<text x='170' y='312' text-anchor='middle' class='arch-sublabel'>Jetpack Compose UI</text>" +
+      "<rect x='330' y='270' width='200' height='56' rx='10' class='arch-box'></rect>" +
+      "<text x='430' y='294' text-anchor='middle' class='arch-label'>iOS</text>" +
+      "<text x='430' y='312' text-anchor='middle' class='arch-sublabel'>Compose Multiplatform UI</text>" +
+      "</svg>",
+      "This isn't a decision I'm making in a vacuum either. Shipaton has a Ship Kotlin Everywhere category this year, judged specifically on a polished app built for both iOS and Android with KMP, and seeing that confirms a call I was already leaning toward for purely practical reasons. I'd rather say that plainly than pretend the categories have nothing to do with it. Some of what I build here is shaped by wanting this to also hold up as a real submission for Ship Kotlin Everywhere and the Peace Prize, not just a personal project that happens to exist during Shipaton.",
+      "By the end of today: one shared module compiling clean on both targets, and all ~17 MVP screens up as a real, empty, navigable shell. No behavioral logic yet, nothing to screenshot. But everything I build after this lands somewhere that already makes sense, on both phones, from the same code.",
     ],
   },
 ];

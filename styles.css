@@ -226,6 +226,40 @@ nav.site-nav a:hover {
   color: var(--ink-soft);
 }
 
+/* Inline architecture/technical diagrams embedded in a journal entry's body. */
+.arch-diagram {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 4px 0 16px;
+}
+.arch-box {
+  fill: var(--white);
+  stroke: var(--border);
+  stroke-width: 1.5px;
+}
+.arch-box-accent {
+  fill: var(--blue-soft);
+  stroke: var(--blue-mid);
+  stroke-width: 1.5px;
+}
+.arch-label {
+  font: 600 13px -apple-system, "Segoe UI", sans-serif;
+  fill: var(--ink);
+}
+.arch-sublabel {
+  font: 500 11px -apple-system, "Segoe UI", sans-serif;
+  fill: var(--ink-soft);
+}
+.arch-arrow {
+  stroke: var(--blue-mid);
+  stroke-width: 2px;
+  fill: none;
+}
+.arch-arrowhead {
+  fill: var(--blue-mid);
+}
+
 .tag {
   display: inline-block;
   font-size: 0.75rem;
@@ -347,6 +381,25 @@ footer.site {
   .card {
     background: #1a2c3d;
     border-color: #2a4560;
+  }
+  .arch-box {
+    fill: #1a2c3d;
+    stroke: #2a4560;
+  }
+  .arch-box-accent {
+    fill: #223954;
+    stroke: var(--blue-mid);
+  }
+  .arch-label {
+    fill: var(--white);
+  }
+  .arch-sublabel {
+    fill: var(--blue-soft);
+  }
+  .arch-arrow,
+  .arch-arrowhead {
+    stroke: var(--blue-soft);
+    fill: var(--blue-soft);
   }
   nav.site-nav a {
     color: var(--blue-mid);
