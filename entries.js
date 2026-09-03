@@ -34,7 +34,7 @@ const JOURNAL_ENTRIES = [
     ],
   },
   {
-    date: "2026-08-30",
+    date: "2026-09-02",
     title: "One shared core, two phones: the first decision, and why it wasn't purely technical",
     tags: ["engineering", "product"],
     body: [
